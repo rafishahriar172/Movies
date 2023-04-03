@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios"
 import "./Login.scss"
 
 const Register = () => {
@@ -7,24 +8,37 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
+  const [inputs, setInput] = useState({
+    userName: "",
+    email: "",
+    password:""
+  })
 
   const navigate = useNavigate();
 
-  const handleEmailChange = (event) => {
+  const handelChange = (event) => {
     setEmail(event.target.value);
+    setInput(prev => ({...prev, [event.target.name]: event.target.value}))
   };
-  const handleUserChange = (event) => {
-    setUser(event.target.value);
-  };
+  // const handleUserChange = (event) => {
+  //   setUser(event.target.value);
+  // };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
+  // const handlePasswordChange = (event) => {
+  //   setPassword(event.target.value);
+  // };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(`Email: ${email}, User: ${user} ,Password: ${password}`);
-    navigate("/")
+    console.log(inputs);
+    try{
+      const res = await axios.post("http://localhost:5000/api/auth/register", inputs)
+      console.log(res)
+      navigate("/")
+    }catch(err){
+
+    }
+
   };
 
   return (
@@ -37,9 +51,9 @@ const Register = () => {
             type="email"
             className="form-control"
             id="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={handleEmailChange}
+            placeholder="Enter email"            
+            name='email'
+            onChange={handelChange}
             required
           />
         </div>
@@ -50,8 +64,8 @@ const Register = () => {
             className="form-control"
             id="user"
             placeholder="Enter email"
-            value={user}
-            onChange={handleUserChange}
+            name='userName'
+            onChange={handelChange}
             required
           />
         </div>
@@ -62,8 +76,8 @@ const Register = () => {
             className="form-control"
             id="password"
             placeholder="Password"
-            value={password}
-            onChange={handlePasswordChange}
+            name='password'
+            onChange={handelChange}
             required
           />
         </div>
