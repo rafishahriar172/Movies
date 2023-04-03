@@ -5,6 +5,7 @@ import Register from "./Pages/Register"
 import Navbar from "./component/Navbar"
 import Footer from "./component/Footer"
 import Menu from "./component/Menu"
+import "./App.css"
 
 function App() {
 
