@@ -41,7 +41,7 @@
 .read-the-docs {
   color: #888;
 } */
-
+$lightGreen: #b9e7e7;
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -56,4 +56,19 @@
 .links{
   text-decoration: none;
   color: inherit;
+}
+
+.footer{
+  margin-top: 100px;
+  padding: 20px;
+  background-color: $lightGreen;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  img{
+      height: 50px;
+      color:black;
+      background-color: white;
+  }
 }

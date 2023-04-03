@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faBars} from "@fortawesome/free-solid-svg-icons"
+import logo from "./logo.png"
 
 import './Navbar.scss'
 
@@ -14,8 +15,8 @@ const Navbar = () => {
   };
   return (
    <nav className="navbar">
-      <Link className='links' to="/" id="logo">
-        My Website
+      <Link className='links' to="/" id="logo">        
+        My Websites     
       </Link>
       <div className={`menu-icon ${isMobile ? 'active' : ''}`} onClick={toggleMobileMenu}>
       <FontAwesomeIcon icon={faBars} />
