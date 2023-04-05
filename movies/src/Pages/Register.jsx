@@ -5,19 +5,19 @@ import "./Login.scss"
 
 const Register = () => {
 
-  const [email, setEmail] = useState('');
-  const [user, setUser] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [user, setUser] = useState('');
+  // const [password, setPassword] = useState('');
   const [inputs, setInput] = useState({
-    userName: "",
     email: "",
+    name: "",
     password:""
   })
 
   const navigate = useNavigate();
 
   const handelChange = (event) => {
-    setEmail(event.target.value);
+    // setEmail(event.target.value);
     setInput(prev => ({...prev, [event.target.name]: event.target.value}))
   };
   // const handleUserChange = (event) => {
@@ -64,7 +64,7 @@ const Register = () => {
             className="form-control"
             id="user"
             placeholder="Enter email"
-            name='userName'
+            name='name'
             onChange={handelChange}
             required
           />
@@ -76,7 +76,7 @@ const Register = () => {
             className="form-control"
             id="password"
             placeholder="Password"
-            name='password'
+            name='userPassword'
             onChange={handelChange}
             required
           />
