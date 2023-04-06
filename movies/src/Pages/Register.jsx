@@ -6,9 +6,6 @@ import { postApi } from './api';
 
 const Register = () => {
 
-  // const [email, setEmail] = useState('');
-  // const [user, setUser] = useState('');
-  // const [password, setPassword] = useState('');
   const [inputs, setInput] = useState({
     "email": "",
     "username": "",
@@ -20,27 +17,23 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handelChange = (event) => {
-    // setEmail(event.target.value);
+    
     setInput(prev => ({...prev, [event.target.name]: event.target.value}))
   };
-  // const handleUserChange = (event) => {
-  //   setUser(event.target.value);
-  // };
-
-  // const handlePasswordChange = (event) => {
-  //   setPassword(event.target.value);
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputs);
-    try{
-      await axios.post(postApi, inputs)      
-      navigate("/")
-    }catch(err){
-      setErr(err.response.data)
+    if(inputs.password.length<8){
+      alert("Password can not be less than 8 Character")
     }
-
+    else{
+      try{
+        await axios.post(postApi, inputs)      
+        navigate("/")
+      }catch(err){
+        setErr(err.response.data)
+      }
+    }
   };
 
   return (
@@ -83,7 +76,7 @@ const Register = () => {
             required
           />
         </div>
-        {err && <p>{err}</p>}
+        {err && <p className='errMsg'>{err}</p>}
         <button type="submit" className="btn btn-primary">
           Sign Up
         </button>

@@ -3,29 +3,24 @@ import { Link, useNavigate } from 'react-router-dom';
 import "./Login.scss"
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  const [inputs, setInputs] = useState({
+    username:"",
+    password:""
+  });
 
   const navigate = useNavigate();
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+  const handleChange= (event) => {
+    setInputs(prev => ({...prev, [event.target.name] : event.target.value}))
+  }
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     try{
-      console.log(`Email: ${email}, Password: ${password}`);
-      if(password.length < 8){
-        alert("password can not be less then 8")
-      }
-      else{
-        navigate("/")
-      }
+      console.log(inputs);
+      
     }catch(err){
 
     }
@@ -35,14 +30,14 @@ const Login = () => {
       <h2 style={{textAlign:"center"}}>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="email">username</label>
           <input
-            type="email"
+            type="text"
             className="form-control"
-            id="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={handleEmailChange}
+            id="username"
+            placeholder="Username"  
+            name='username'          
+            onChange={handleChange}
             required
           />
         </div>
@@ -53,8 +48,8 @@ const Login = () => {
             className="form-control"
             id="password"
             placeholder="Password"
-            value={password}
-            onChange={handlePasswordChange}
+            name='password'           
+            onChange={handleChange}
             required
           />
         </div>
