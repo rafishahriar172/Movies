@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios"
 import "./Login.scss"
+import { postApi } from './api';
 
 const Register = () => {
 
@@ -9,10 +10,12 @@ const Register = () => {
   // const [user, setUser] = useState('');
   // const [password, setPassword] = useState('');
   const [inputs, setInput] = useState({
-    email: "",
-    name: "",
-    password:""
+    "email": "",
+    "username": "",
+    "password":""
   })
+
+  const [err,setErr] = useState(null)
 
   const navigate = useNavigate();
 
@@ -32,11 +35,10 @@ const Register = () => {
     event.preventDefault();
     console.log(inputs);
     try{
-      const res = await axios.post("http://localhost:5000/api/auth/register", inputs)
-      console.log(res)
+      await axios.post(postApi, inputs)      
       navigate("/")
     }catch(err){
-
+      setErr(err.response.data)
     }
 
   };
@@ -62,9 +64,9 @@ const Register = () => {
           <input
             type="name"
             className="form-control"
-            id="user"
+            id="username"
             placeholder="Enter email"
-            name='name'
+            name="username"
             onChange={handelChange}
             required
           />
@@ -76,11 +78,12 @@ const Register = () => {
             className="form-control"
             id="password"
             placeholder="Password"
-            name='userPassword'
+            name='password'
             onChange={handelChange}
             required
           />
         </div>
+        {err && <p>{err}</p>}
         <button type="submit" className="btn btn-primary">
           Sign Up
         </button>
