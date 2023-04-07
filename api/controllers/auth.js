@@ -36,14 +36,14 @@ export const login = (req,res) => {
 
     db.query(q,[req.body.username, req.body.password], (err,data) => {
       if(err) return res.status(500).json(err)
-      if(data.length === 0) return res.status(404).json("User not found!");
+      if(data.length === 0) return res.status(404).json("User not found!!");
 
       const isPasswordCorrect = bcrypt.compareSync(
         req.body.password,
         data[0].password
       );
 
-      if (!isPasswordCorrect) return res.status(400).json("Wrong username or password!");
+      if (!isPasswordCorrect) return res.status(400).json("Wrong password!");
 
       const token = jwt.sign({ id: data[0].id }, "jwtkey");
       const { password, ...other } = data[0];

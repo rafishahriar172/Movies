@@ -1,28 +1,36 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "./Login.scss"
+import axios from 'axios';
+import { loginApi } from './api';
+
 
 const Login = () => {
 
   const [inputs, setInputs] = useState({
-    username:"",
-    password:""
+    "username":"",
+    "password":""
   });
 
   const navigate = useNavigate();
+
+  const [errMsg,setErrMsg] = useState(null)
+
 
   const handleChange= (event) => {
     setInputs(prev => ({...prev, [event.target.name] : event.target.value}))
   }
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try{
       console.log(inputs);
-      
-    }catch(err){
+      await axios.post(loginApi,inputs)
+      navigate("/")
 
+    }catch(err){
+      setErrMsg(err.response.data)
     }
   };
   return (
@@ -53,6 +61,7 @@ const Login = () => {
             required
           />
         </div>
+        {errMsg && <p className='errMsg'>{errMsg}</p>}
         <button type="submit" className="btn btn-primary">
           Login
         </button>
