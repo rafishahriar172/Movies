@@ -24,12 +24,6 @@ export const register = (req, res) => {
   });
 };
 
-// export const register = (req,res) => {
-
-//     //check for existing user
-//     const q = 'SELECT * FROM users WHERE userEmail = ? OR userName = ?'
-
-// }
 
 export const login = (req,res) => {
     const q = 'SELECT * FROM users WHERE username = ? OR password = ?'
@@ -58,6 +52,10 @@ export const login = (req,res) => {
     })
 }
 
-// export const logout = (req,res) => {
+export const logout = (req,res) => {
     
-// }
+  res.clearCookie("access_token", {
+    sameSite:"none",
+    secure:true
+  }).status(200).json("Logout")
+}
