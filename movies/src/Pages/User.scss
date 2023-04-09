@@ -1,0 +1,55 @@
+.user{
+    margin: auto;
+    padding: 20px;
+    max-width: 400px;
+    display: flex;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }  
+  .userImg{
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    img{
+        width: 20%;
+        height: 20%;
+        justify-content: center;
+        align-items: center;
+        border:2px solid black;
+        border-radius:50%;
+        -moz-border-radius:50%;
+        -webkit-border-radius:50%;
+      }
+
+      .upphoto{
+        background-color: teal;
+        color: whitesmoke;
+        cursor: pointer;
+        padding: 10px;
+        margin-left: 7vw;
+        width: 30%;
+        border-radius:5px;
+      }
+  }
+
+  @media (max-width: 768px) {
+    .user {
+      margin-top: 50px;
+
+      .upphoto{
+        margin-left: 24vw;
+        width: 40%;
+      }
+    }
+  }
