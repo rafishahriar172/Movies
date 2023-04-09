@@ -41,7 +41,7 @@ const Login = () => {
       <h2 style={{textAlign:"center"}}>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">username</label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             className="form-control"

@@ -29,7 +29,9 @@ const Navbar = () => {
           <Link className ="links" to="/">Home</Link>
         </li>
         <li>
-          <span>{currentUser?.username}</span>
+          <Link className='links' to="/user">
+            <span>{currentUser?.username}</span>
+          </Link>
         </li>
         <li>
           {currentUser ? (

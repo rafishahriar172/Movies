@@ -6,6 +6,7 @@ import Navbar from "./component/Navbar"
 import Footer from "./component/Footer"
 import Menu from "./component/Menu"
 import "./App.scss"
+import User from "./Pages/User"
 
 function App() {
 
@@ -31,6 +32,10 @@ function App() {
         {
           path:"/menu",
           element:<Menu/>
+        },
+        {
+          path:"/user",
+          element:<User/>
         },
       ]
     },
