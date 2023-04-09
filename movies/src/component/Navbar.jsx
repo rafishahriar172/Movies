@@ -35,7 +35,7 @@ const Navbar = () => {
         </li>
         <li>
           {currentUser ? (
-          <span style={{cursor:'pointer'}} onClick={logout}>Logout</span>
+          <span style={{cursor:'pointer', fontWeight:"bold"}} onClick={logout}>Logout</span>
           ) : (
           <Link className ="links" to="/login">Login</Link>)
           }
