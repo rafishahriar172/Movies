@@ -41,7 +41,11 @@ const Navbar = () => {
           }
         </li>
         <li>
-          <Link className ="links" to="/register">Register</Link>
+          {currentUser ?(
+            <Link className ="links" to="/register" style={{display:"none"}}>Register</Link> 
+          ):(
+            <Link className ="links" to="/register">Register</Link>            
+          )}
         </li>
       </ul>
     </nav>  
